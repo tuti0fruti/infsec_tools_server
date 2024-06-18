@@ -5,7 +5,8 @@
 {% block content %}
     <h1>{{ solution.name }}</h1>
     <p>{{ solution.description }}</p>
-    
+    <a href="{% url 'add_to_cart_solution' solution.solution_id %}" class="btn btn-primary">Купить</a>
+
     <h2>Продукты, входящие в состав:</h2>
     <ul>
         {% for product in products %}
