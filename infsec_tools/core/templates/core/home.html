@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Добро пожаловать в InfSec Tools!</h1>
+        <p class="lead">Мы предлагаем лучшие средства для защиты информации.</p>
+        <hr class="my-4">
+        <p>Ознакомьтесь с нашими продуктами и комплексными решениями.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'product_list' %}" role="button">Продукты</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'complexsolution_list' %}" role="button">Комплексные решения</a>
+    </div>
+{% endblock %}

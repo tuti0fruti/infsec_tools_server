@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block title %}Комплексные решения{% endblock %}
+
+{% block content %}
+    <h1>Наши комплексные решения</h1>
+    <div class="row">
+        {% for solution in complexsolutions %}
+            {% if solution.solution_id %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ solution.name }}</h5>
+                            <p class="card-text">{{ solution.description|truncatewords:30 }}</p>
+                            <a href="{% url 'complexsolution_detail' solution.solution_id %}" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ solution.name }}</h5>
+                            <p class="card-text">ID отсутствует</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

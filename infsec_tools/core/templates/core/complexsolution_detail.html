@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ solution.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ solution.name }}</h1>
+    <p>{{ solution.description }}</p>
+    <a href="{% url 'complexsolution_list' %}" class="btn btn-secondary">Назад к списку комплексных решений</a>
+{% endblock %}

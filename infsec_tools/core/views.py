@@ -1,43 +1,24 @@
 from rest_framework import viewsets
 from .models import Classifier, Complexsolution, Complexsolutionproducts, Customerrequest, Customerrequestitems, Employee, Product, Soldproduct
-from .serializers import ClassifierSerializer, ComplexsolutionSerializer, ComplexsolutionproductsSerializer, CustomerrequestSerializer, CustomerrequestitemsSerializer, EmployeeSerializer, ProductSerializer, SoldproductSerializer
 
-class ClassifierViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Classifier """
-    queryset = Classifier.objects.all()
-    serializer_class = ClassifierSerializer
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 
-class ComplexsolutionViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Complexsolution """
-    queryset = Complexsolution.objects.all()
-    serializer_class = ComplexsolutionSerializer
+def home(request):
+    return render(request, 'core/home.html')
 
-class ProductViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Product """
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'core/product_list.html', {'products': products})
 
-class ComplexsolutionproductsViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Complexsolutionproducts """
-    queryset = Complexsolutionproducts.objects.all()
-    serializer_class = ComplexsolutionproductsSerializer
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'core/product_detail.html', {'product': product})
 
-class CustomerrequestViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Customerrequest """
-    queryset = Customerrequest.objects.all()
-    serializer_class = CustomerrequestSerializer
+def complexsolution_list(request):
+    complexsolutions = Complexsolution.objects.all()
+    return render(request, 'core/complexsolution_list.html', {'complexsolutions': complexsolutions})
 
-class CustomerrequestitemsViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Customerrequestitems """
-    queryset = Customerrequestitems.objects.all()
-    serializer_class = CustomerrequestitemsSerializer
-
-class EmployeeViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Employee """
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
-
-class SoldproductViewSet(viewsets.ModelViewSet):
-    """ Представление для модели Soldproduct """
-    queryset = Soldproduct.objects.all()
-    serializer_class = SoldproductSerializer
+def complexsolution_detail(request, pk):
+    solution = get_object_or_404(Complexsolution, pk=pk)
+    return render(request, 'core/complexsolution_detail.html', {'solution': solution})
