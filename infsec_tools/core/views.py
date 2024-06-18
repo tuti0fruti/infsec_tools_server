@@ -21,4 +21,7 @@ def complexsolution_list(request):
 
 def complexsolution_detail(request, pk):
     solution = get_object_or_404(Complexsolution, pk=pk)
-    return render(request, 'core/complexsolution_detail.html', {'solution': solution})
+    products = solution.get_products()
+    return render(request, 'core/complexsolution_detail.html', {'solution': solution, 'products': products})
+
+

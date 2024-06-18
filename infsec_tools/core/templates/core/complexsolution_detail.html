@@ -5,5 +5,15 @@
 {% block content %}
     <h1>{{ solution.name }}</h1>
     <p>{{ solution.description }}</p>
+    
+    <h2>Продукты, входящие в состав:</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'product_detail' product.product_id %}">{{ product.name }}</a> - {{ product.description|truncatewords:15 }}
+            </li>
+        {% endfor %}
+    </ul>
+    
     <a href="{% url 'complexsolution_list' %}" class="btn btn-secondary">Назад к списку комплексных решений</a>
 {% endblock %}

@@ -27,6 +27,9 @@ class Complexsolution(models.Model):
         managed = True
         db_table = 'ComplexSolution'
 
+    def get_products(self):
+        return Product.objects.filter(complexsolutionproducts__solution=self)
+
 
 class Complexsolutionproducts(models.Model):
     solution = models.ForeignKey(Complexsolution, on_delete=models.CASCADE)
